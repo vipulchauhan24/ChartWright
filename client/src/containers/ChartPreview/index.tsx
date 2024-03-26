@@ -20,18 +20,77 @@ function ChartPreview() {
       { year: 2015, count: 30 },
       { year: 2016, count: 28 },
     ];
+    const dataSet = [
+      {
+        label: '1',
+        data: 10,
+        borderColor: '#4287f5',
+        backgroundColor: '#4287f5',
+        borderWidth: 2,
+        borderRadius: Number.MAX_VALUE,
+        borderSkipped: false,
+      },
+      {
+        label: '2',
+        data: 14,
+        borderColor: '#4287f5',
+        backgroundColor: '#4287f5',
+        borderWidth: 2,
+        borderRadius: Number.MAX_VALUE,
+        borderSkipped: false,
+      },
+      {
+        label: '3',
+        data: 9,
+        borderColor: '#4287f5',
+        backgroundColor: '#4287f5',
+        borderWidth: 2,
+        borderRadius: Number.MAX_VALUE,
+        borderSkipped: false,
+      },
+    ];
     ChartJS.register(BarElement, BarController, CategoryScale, LinearScale);
     const ctx = canvasRef.current.getContext('2d');
-    let myChart: ChartJS;
+    let myChart: any;
     if (ctx) {
       myChart = new ChartJS(ctx, {
         type: 'bar',
         data: {
-          labels: data.map((row) => row.year),
+          labels: ['A'],
           datasets: [
             {
-              label: 'Acquisitions by year',
-              data: data.map((row) => row.count),
+              label: 'A',
+              data: [10],
+              borderColor: '#36A2EB',
+              borderWidth: 2,
+              backgroundColor: '#9BD0F5',
+              borderRadius: 5,
+              barThickness: 50,
+              hoverBackgroundColor: '#FFB1C1',
+              hoverBorderColor: '#FFB1C1',
+            },
+            {
+              label: 'B',
+              data: [20],
+              borderColor: '#FF6384',
+              borderWidth: 2,
+              backgroundColor: '#FFB1C1',
+              borderRadius: 5,
+              barThickness: 50,
+              hoverBackgroundColor: '#9BD0F5',
+              hoverBorderColor: '#9BD0F5',
+            },
+            {
+              label: 'C',
+              data: [20],
+              borderColor: '#FF6384',
+              borderWidth: 2,
+              backgroundColor: '#FFB1C1',
+              borderRadius: 5,
+              borderSkipped: true,
+              barThickness: 50,
+              hoverBackgroundColor: '#9BD0F5',
+              hoverBorderColor: '#9BD0F5',
             },
           ],
         },
