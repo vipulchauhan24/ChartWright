@@ -10,15 +10,18 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
+    publicPath: '/'
   },
   devServer: {
     port: 9001,
-    hot: true,
+    hot: true
   },
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../client/src')
+    },
     extensions: ['.ts', '.tsx', '.js'],
-    modules: ['node_modules', 'app'],
+    modules: ['node_modules', 'app']
   },
   devtool: 'eval-cheap-module-source-map',
   module: {
@@ -29,9 +32,9 @@ module.exports = {
         use: {
           loader: 'ts-loader',
           options: {
-            logLevel: 'info',
-          },
-        },
+            logLevel: 'info'
+          }
+        }
       },
       {
         test: /\.s[ac]ss$/i,
@@ -41,16 +44,16 @@ module.exports = {
           // Translates CSS into CommonJS
           'css-loader',
           // Compiles Sass to CSS
-          'sass-loader',
-        ],
-      },
-    ],
+          'sass-loader'
+        ]
+      }
+    ]
   },
   plugins: [
     new forkTSChecker(),
     new htmlWebpackPlugin({
       inject: true,
-      template: path.resolve(__dirname, '../client/index.html'),
-    }),
-  ],
+      template: path.resolve(__dirname, '../client/index.html')
+    })
+  ]
 };
